@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">iToDoList</string>
+    <string name="MiTexto">iToDoList</string>
+    <string name="ToDoTitle">Current list</string>
+    <string name="MiBoton">iToDoList</string>
+    <string name="MiCasilla">iToDoList</string>
+</resources>

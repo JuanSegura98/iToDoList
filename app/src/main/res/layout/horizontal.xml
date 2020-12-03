@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent">
+        <TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/MiTexto"
+                android:textStyle="bold"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="First item"/>
+            <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/progressbar1"
+                    android:layout_width="102dp"
+                    android:layout_height="10dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginLeft="50dp"
+                    android:src="@drawable/box" />
+                <ImageView
+                    android:id="@+id/completedbar1"
+                    android:layout_width="100dp"
+                    android:layout_height="8dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginBottom="6dp"
+                    android:layout_marginStart="51dp"
+                    android:layout_marginLeft="40dp"
+                    android:src="@drawable/box2" />
+            </FrameLayout>
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Second item"/>
+            <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/progressbar2"
+                    android:layout_width="102dp"
+                    android:layout_height="10dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginLeft="50dp"
+                    android:src="@drawable/box" />
+                <ImageView
+                    android:id="@+id/completedbar2"
+                    android:layout_width="60dp"
+                    android:layout_height="8dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginBottom="6dp"
+                    android:layout_marginStart="51dp"
+                    android:layout_marginLeft="40dp"
+                    android:src="@drawable/box2" />
+            </FrameLayout>
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Third item"/>
+            <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/progressbar3"
+                    android:layout_width="102dp"
+                    android:layout_height="10dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginLeft="50dp"
+                    android:src="@drawable/box" />
+                <ImageView
+                    android:id="@+id/completedbar3"
+                    android:layout_width="20dp"
+                    android:layout_height="8dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginBottom="6dp"
+                    android:layout_marginStart="51dp"
+                    android:layout_marginLeft="40dp"
+                    android:src="@drawable/box2" />
+            </FrameLayout>
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Fourth item"/>
+            <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/progressbar4"
+                    android:layout_width="102dp"
+                    android:layout_height="10dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginLeft="50dp"
+                    android:src="@drawable/box" />
+                <ImageView
+                    android:id="@+id/completedbar4"
+                    android:layout_width="50dp"
+                    android:layout_height="8dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginBottom="6dp"
+                    android:layout_marginStart="51dp"
+                    android:layout_marginLeft="40dp"
+                    android:src="@drawable/box2" />
+            </FrameLayout>
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Fifth item"/>
+            <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/progressbar5"
+                    android:layout_width="102dp"
+                    android:layout_height="10dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginLeft="50dp"
+                    android:src="@drawable/box" />
+                <ImageView
+                    android:id="@+id/completedbar5"
+                    android:layout_width="0dp"
+                    android:layout_height="8dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginBottom="6dp"
+                    android:layout_marginStart="51dp"
+                    android:layout_marginLeft="40dp"
+                    android:src="@drawable/box2" />
+            </FrameLayout>
+        </TableRow>
+    </TableLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

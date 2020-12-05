@@ -16,16 +16,16 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/MiTexto"
+                    android:text="@string/ProgressBarsTitle"
                     android:textStyle="bold"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
             </TableRow>
             <TableRow>
                 <TextView
-                    android:id="@+id/progress1id"
+                    android:id="@+id/entry1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="First item"/>
+                    android:text="@string/firstEntry"/>
 
                 <FrameLayout
                     android:layout_width="wrap_content"
@@ -41,7 +41,7 @@
                         android:src="@drawable/box" />
                     <ImageView
                         android:id="@+id/completedbar1"
-                        android:layout_width="100dp"
+                        android:layout_width="50dp"
                         android:layout_height="8dp"
                         android:layout_marginTop="6dp"
                         android:layout_marginBottom="6dp"
@@ -52,10 +52,12 @@
             </TableRow>
             <TableRow>
                 <TextView
+                    android:id="@+id/entry2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Second item"/>
-                <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:text="@string/secondEntry"/>
+
+                <FrameLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                     <ImageView
@@ -80,10 +82,12 @@
             </TableRow>
             <TableRow>
                 <TextView
+                    android:id="@+id/entry3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Third item"/>
-                <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:text="@string/thirdEntry"/>
+
+                <FrameLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                     <ImageView
@@ -108,10 +112,12 @@
             </TableRow>
             <TableRow>
                 <TextView
+                    android:id="@+id/entry4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Fourth item"/>
-                <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:text="@string/fourthEntry"/>
+
+                <FrameLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                     <ImageView
@@ -136,10 +142,12 @@
             </TableRow>
             <TableRow>
                 <TextView
+                    android:id="@+id/entry5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Fifth item"/>
-                <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:text="@string/fifthEntry"/>
+
+                <FrameLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                     <ImageView
@@ -150,10 +158,10 @@
                         android:layout_marginBottom="5dp"
                         android:layout_marginStart="50dp"
                         android:layout_marginLeft="50dp"
-                        android:src="@drawable/box" />
+                        android:src="@drawable/box"/>
                     <ImageView
                         android:id="@+id/completedbar5"
-                        android:layout_width="0dp"
+                        android:layout_width="50dp"
                         android:layout_height="8dp"
                         android:layout_marginTop="6dp"
                         android:layout_marginBottom="6dp"

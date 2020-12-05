@@ -50,8 +50,17 @@ public class Progressbars extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_progressbars, container, false);
 
+        int numberOfEntries = 5;
+        TextView[] Entry = new TextView[numberOfEntries];
+        ImageView[] Image = new ImageView[numberOfEntries];
+        for(int i = 0; i < numberOfEntries; i++){
+            Entry[i] = (TextView) view.findViewById(getResources().getIdentifier("entry" + (i+1), "id", "com.example.itodolist"));
+            Image[i] = (ImageView) view.findViewById(getResources().getIdentifier("completedbar" + (i+1), "id", "com.example.itodolist"));
+        }
+
         TasksDatabase admin = new TasksDatabase(getContext(), "administracion", null, 1);
         SQLiteDatabase db = admin.getWritableDatabase();
+        int iteration = 0;
         Cursor fila = db.rawQuery("select progressbar, name, begindate, enddate, measureunit, totalunits, currentunits from progressbars", null);
         if (fila.moveToFirst()) {
             do {
@@ -63,52 +72,14 @@ public class Progressbars extends Fragment {
                     measureunit = fila.getString(4);
                     totalunits = fila.getInt(5);
                     currentunits = fila.getInt(6);
-                    switch(progressbar) {
-                        case 1:
-                            TextView Entry1 = (TextView) view.findViewById(R.id.entry1);
-                            ImageView Completedbar1 = (ImageView) view.findViewById(R.id.completedbar1);
-                            int percentageCompleted1 = Math.round((float)currentunits*100/totalunits);
 
-                            Entry1.setText(name);
-                            Completedbar1.getLayoutParams().width = convertDpToPx(getContext(), percentageCompleted1);
-                            break;
-                        case 2:
-                            TextView Entry2 = (TextView) view.findViewById(R.id.entry2);
-                            ImageView Completedbar2 = (ImageView) view.findViewById(R.id.completedbar2);
-                            int percentageCompleted2 = Math.round((float)currentunits*100/totalunits);
+                    int percentageCompleted = Math.round((float)currentunits*100/totalunits);
 
-                            Entry2.setText(name);
-                            Completedbar2.getLayoutParams().width = convertDpToPx(getContext(), percentageCompleted2);
-                            break;
-                        case 3:
-                            TextView Entry3 = (TextView) view.findViewById(R.id.entry3);
-                            ImageView Completedbar3 = (ImageView) view.findViewById(R.id.completedbar3);
-                            int percentageCompleted3 = Math.round((float)currentunits*100/totalunits);
-
-                            Entry3.setText(name);
-                            Completedbar3.getLayoutParams().width = convertDpToPx(getContext(), percentageCompleted3);
-                            break;
-                        case 4:
-                            TextView Entry4 = (TextView) view.findViewById(R.id.entry4);
-                            ImageView Completedbar4 = (ImageView) view.findViewById(R.id.completedbar4);
-                            int percentageCompleted4 = Math.round((float)currentunits*100/totalunits);
-
-                            Entry4.setText(name);
-                            Completedbar4.getLayoutParams().width = convertDpToPx(getContext(), percentageCompleted4);
-                            break;
-                        case 5:
-                            TextView Entry5 = (TextView) view.findViewById(R.id.entry5);
-                            ImageView Completedbar5 = (ImageView) view.findViewById(R.id.completedbar5);
-                            int percentageCompleted5 = Math.round((float)currentunits*100/totalunits);
-
-                            Entry5.setText(name);
-                            Completedbar5.getLayoutParams().width = convertDpToPx(getContext(), percentageCompleted5);
-                            break;
-                        default:
-                            Toast.makeText(getContext(), "Error loading a row", Toast.LENGTH_SHORT).show();
-                    }
-                }catch (Exception e) {
-                    Toast.makeText(getContext(), "Error parsing the row", Toast.LENGTH_SHORT).show();
+                    Entry[iteration].setText(name);
+                    Image[iteration].getLayoutParams().width = convertDpToPx(getContext(), percentageCompleted);
+                    iteration++;
+                    } catch (Exception e) {
+                     Toast.makeText(getContext(), "Error parsing the row", Toast.LENGTH_SHORT).show();
                 }
             } while(fila.moveToNext());
         } else

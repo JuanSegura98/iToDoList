@@ -10,6 +10,7 @@ import android.database.sqlite.SQLiteQueryBuilder;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 
 import android.text.Layout;
 import android.util.Log;
@@ -21,6 +22,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import java.util.Date;
 
 public class Progressbars extends Fragment {
@@ -29,12 +32,16 @@ public class Progressbars extends Fragment {
         // Required empty public constructor
     }
 
+    private FloatingActionButton fab;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
     }
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -49,6 +56,17 @@ public class Progressbars extends Fragment {
         int currentunits = -1;
 
         View view = inflater.inflate(R.layout.fragment_progressbars, container, false);
+
+        fab = (FloatingActionButton) view.findViewById(R.id.floating_action_button);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                NavHostFragment.findNavController(Progressbars.this)
+                        .navigate(R.id.action_FirstFragment_to_SecondFragment);
+
+            }
+        });
 
         int numberOfEntries = 5;
         TextView[] Entry = new TextView[numberOfEntries];

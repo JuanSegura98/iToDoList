@@ -7,12 +7,14 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 import android.widget.Toast;
 
+
 public class TasksDatabase extends SQLiteOpenHelper {
     public TasksDatabase(Context context, String nombre,
                     SQLiteDatabase.CursorFactory factory,
                     int version) {
         super(context, nombre, factory, version);
     }
+
     @Override
     public void onCreate(SQLiteDatabase db) {
         try{
@@ -28,3 +30,4 @@ public class TasksDatabase extends SQLiteOpenHelper {
         db.execSQL("create table progressbars(progressbar integer primary key, name text, begindate text, enddate text, measureunit text, totalunits integer, currentunits integer)");
     }
 }
+

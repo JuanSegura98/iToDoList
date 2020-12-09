@@ -1,5 +1,6 @@
 package com.example.itodolist;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -10,7 +11,7 @@ import java.util.List;
 
 public class TasksRepository {
 
-    final TasksDatabase admin;
+    private final TasksDatabase admin;
 
 
     public TasksRepository(Context context) {
@@ -38,13 +39,36 @@ public class TasksRepository {
         return tasks;
     }
 
-    void createTask(Task task) {
-        SQLiteDatabase db = admin.getWritableDatabase();
-        final String values = String.format("(\"%s\", \"%s\", \"%s\", \"%s\", %s, %s);", task.name, task.beginDate, task.endDate, task.measureUnit, String.valueOf(task.totalUnits), String.valueOf(task.currentUnits));
-        Cursor result = db.rawQuery("insert into progressbars (name, begindate, enddate, measureunit, totalunits, currentunits) \n values " + values, null);
+    void createTask(Task task) throws Exception {
+        long rowInserted;
+        final SQLiteDatabase db = admin.getWritableDatabase();
+        final ContentValues registro = new ContentValues();
+        registro.put("name", task.name);
+        registro.put("begindate", task.beginDate);
+        registro.put("enddate", task.endDate);
+        registro.put("measureunit", task.measureUnit);
+        registro.put("totalunits", task.totalUnits);
+        registro.put("currentunits", task.currentUnits);
+        rowInserted = db.insert("progressbars", null, registro);
+        if (rowInserted == -1)
+            throw new Exception("Error al almacenar los datos");
+
+        db.close();
+    }
+
+    void deleteTask(Task task) throws Exception {
+        long rowDeleted;
+        final SQLiteDatabase db = admin.getWritableDatabase();
+
+        rowDeleted = db.delete("progressbars", "progressbar" + "=" + task.progressBar, null);
+        if (rowDeleted == -1)
+            throw new Exception("Error al eliminar tarea");
+        db.close();
     }
 
     void close() {
         admin.close();
     }
 }
+
+

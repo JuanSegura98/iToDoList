@@ -34,11 +34,11 @@ public class NewTaskActivity extends AppCompatActivity {
                 try {
                     final String title =  titleField.getEditText().getText().toString();
                     repository.createTask(new Task(title, "", "", "", 6, 2, 0 ));
-                    Toast.makeText(getApplicationContext(), "Tarea creada", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(NewTaskActivity.this, "Tarea creada", Toast.LENGTH_SHORT).show();
 
                     finish();
                 } catch (Exception e) {
-                    Toast.makeText(getApplicationContext(), "Hubo un problema al crear la tarea", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(NewTaskActivity.this, "Hubo un problema al crear la tarea", Toast.LENGTH_SHORT).show();
                 }
             }
         });

@@ -2,6 +2,7 @@ package com.example.itodolist;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.SQLException;
@@ -42,7 +43,6 @@ public class Progressbars extends Fragment {
     }
 
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -61,19 +61,17 @@ public class Progressbars extends Fragment {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                NavHostFragment.findNavController(Progressbars.this)
-                        .navigate(R.id.action_FirstFragment_to_SecondFragment);
-
+                Intent intent = new Intent(getActivity(), NewTaskActivity.class);
+                startActivity(intent);
             }
         });
 
         int numberOfEntries = 5;
         TextView[] Entry = new TextView[numberOfEntries];
         ImageView[] Image = new ImageView[numberOfEntries];
-        for(int i = 0; i < numberOfEntries; i++){
-            Entry[i] = (TextView) view.findViewById(getResources().getIdentifier("entry" + (i+1), "id", "com.example.itodolist"));
-            Image[i] = (ImageView) view.findViewById(getResources().getIdentifier("completedbar" + (i+1), "id", "com.example.itodolist"));
+        for (int i = 0; i < numberOfEntries; i++) {
+            Entry[i] = (TextView) view.findViewById(getResources().getIdentifier("entry" + (i + 1), "id", "com.example.itodolist"));
+            Image[i] = (ImageView) view.findViewById(getResources().getIdentifier("completedbar" + (i + 1), "id", "com.example.itodolist"));
         }
 
         TasksDatabase admin = new TasksDatabase(getContext(), "administracion", null, 1);
@@ -91,15 +89,15 @@ public class Progressbars extends Fragment {
                     totalunits = fila.getInt(5);
                     currentunits = fila.getInt(6);
 
-                    int percentageCompleted = Math.round((float)currentunits*100/totalunits);
+                    int percentageCompleted = Math.round((float) currentunits * 100 / totalunits);
 
                     Entry[iteration].setText(name);
                     Image[iteration].getLayoutParams().width = convertDpToPx(getContext(), percentageCompleted);
                     iteration++;
-                    } catch (Exception e) {
-                     Toast.makeText(getContext(), "Error parsing the row", Toast.LENGTH_SHORT).show();
+                } catch (Exception e) {
+                    Toast.makeText(getContext(), "Error parsing the row", Toast.LENGTH_SHORT).show();
                 }
-            } while(fila.moveToNext());
+            } while (fila.moveToNext());
         } else
             Toast.makeText(getContext(), "Lista vacia", Toast.LENGTH_SHORT).show();
         db.close();
@@ -125,13 +123,14 @@ public class Progressbars extends Fragment {
         registro.put("totalunits", 20);
         registro.put("currentunits", 10);
         rowInserted = db.insert("progressbars", null, registro);
-        if(rowInserted == -1)
+        if (rowInserted == -1)
             Toast.makeText(getContext(), "Problema al almacenar los datos", Toast.LENGTH_SHORT).show();
         else
             Toast.makeText(getContext(), "Datos almacenados", Toast.LENGTH_SHORT).show();
         db.close();
     }
-    public String printValues(){
+
+    public String printValues() {
         int progressbar;
         String thisname = "No name";
         String initdate;
@@ -147,7 +146,7 @@ public class Progressbars extends Fragment {
                 progressbar = fila.getInt(0);
                 Log.d("ThisValues", Integer.toString(progressbar));
                 Toast.makeText(getContext(), Integer.toString(progressbar), Toast.LENGTH_SHORT).show();
-                thisname =  fila.getString(1);
+                thisname = fila.getString(1);
                 Toast.makeText(getContext(), thisname, Toast.LENGTH_SHORT).show();
                 initdate = fila.getString(2);
                 Toast.makeText(getContext(), initdate, Toast.LENGTH_SHORT).show();
@@ -155,9 +154,9 @@ public class Progressbars extends Fragment {
                 Toast.makeText(getContext(), enddate, Toast.LENGTH_SHORT).show();
                 Temas = fila.getString(4);
                 Toast.makeText(getContext(), Temas, Toast.LENGTH_SHORT).show();
-                totalunits= fila.getInt(5);
+                totalunits = fila.getInt(5);
                 Toast.makeText(getContext(), totalunits, Toast.LENGTH_SHORT).show();
-                currentunits= fila.getInt(6);
+                currentunits = fila.getInt(6);
                 Toast.makeText(getContext(), currentunits, Toast.LENGTH_SHORT).show();
             } catch (Exception e) {
                 Log.d("ThisValues", "Has mamado");

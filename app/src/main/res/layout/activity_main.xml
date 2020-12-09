@@ -15,7 +15,7 @@
         tools:context=".MainActivity" >
         <fragment
             android:id="@+id/fragmento_superior"
-            android:name="com.example.itodolist.Progressbars"
+            android:name="com.example.itodolist.ProgressbarsFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_alignParentTop="true"

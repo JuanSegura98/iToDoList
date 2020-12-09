@@ -27,9 +27,9 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.Date;
 
-public class Progressbars extends Fragment {
+public class ProgressbarsFragment extends Fragment {
 
-    public Progressbars() {
+    public ProgressbarsFragment() {
         // Required empty public constructor
     }
 

@@ -10,10 +10,16 @@ import android.widget.Toast;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 public class NewTaskActivity extends AppCompatActivity {
 
     Button createTaskButton;
     TextInputLayout titleField;
+    TextInputLayout dueDateField;
+    TextInputLayout unitsField;
     TasksRepository repository;
 
     @Override
@@ -23,6 +29,8 @@ public class NewTaskActivity extends AppCompatActivity {
         // Set views
         createTaskButton = (Button) findViewById(R.id.createTaskButton);
         titleField = (TextInputLayout)  findViewById(R.id.taskTitle);
+        dueDateField = (TextInputLayout)  findViewById(R.id.taskDate);
+        unitsField = (TextInputLayout)  findViewById(R.id.taskUnits);
 
         // Init repository
         repository = new TasksRepository(getApplicationContext());
@@ -33,7 +41,16 @@ public class NewTaskActivity extends AppCompatActivity {
 
                 try {
                     final String title =  titleField.getEditText().getText().toString();
-                    repository.createTask(new Task(title, "", "", "", 6, 2, 0 ));
+                    final String date =  dueDateField.getEditText().getText().toString();
+                    final String units =  unitsField.getEditText().getText().toString();
+                    String[] parts = units.split(" ");
+
+                    int amount = Integer.parseInt(parts[0]);
+
+                    Date currentTime = Calendar.getInstance().getTime();
+                    String fDate = new SimpleDateFormat("YYYY-MM-DD").format(currentTime);
+
+                    repository.createTask(new Task(title, fDate, date, parts[1], amount, 2, 0 ));
                     Toast.makeText(NewTaskActivity.this, "Tarea creada", Toast.LENGTH_SHORT).show();
 
                     finish();

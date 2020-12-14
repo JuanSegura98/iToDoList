@@ -37,7 +37,7 @@
 
         <ImageView
             android:id="@+id/linearProgressImage"
-            android:layout_width="50dp"
+            android:layout_width="0dp"
             android:layout_height="8dp"
             android:layout_marginStart="51dp"
             android:layout_marginLeft="40dp"

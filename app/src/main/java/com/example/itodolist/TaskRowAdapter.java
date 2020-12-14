@@ -54,7 +54,6 @@ public class TaskRowAdapter extends RecyclerView.Adapter<TaskRowAdapter.ViewHold
             SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
             begin_date = format.parse(task.beginDate);
             end_date = format.parse(task.endDate);
-            long diff = end_date.getTime() - begin_date.getTime();
         } catch (ParseException e) {
             e.printStackTrace();
         }

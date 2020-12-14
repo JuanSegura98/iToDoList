@@ -55,6 +55,20 @@ public class TasksRepository {
         db.close();
     }
 
+    void modifyTask(Task task) throws Exception {
+        long rowInserted;
+        final SQLiteDatabase db = admin.getWritableDatabase();
+        final ContentValues registro = new ContentValues();
+        registro.put("name", task.name);
+        registro.put("enddate", task.endDate);
+        registro.put("currentunits", task.currentUnits);
+        rowInserted = db.update("progressbars", registro, "progressbar" + "=" + task.progressBar, null);
+        if (rowInserted == -1)
+            throw new Exception("Error al almacenar los datos");
+
+        db.close();
+    }
+
     void deleteTask(Task task) throws Exception {
         long rowDeleted;
         final SQLiteDatabase db = admin.getWritableDatabase();

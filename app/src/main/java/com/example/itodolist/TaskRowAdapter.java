@@ -10,6 +10,10 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class TaskRowAdapter extends RecyclerView.Adapter<TaskRowAdapter.ViewHolder> {
@@ -38,9 +42,32 @@ public class TaskRowAdapter extends RecyclerView.Adapter<TaskRowAdapter.ViewHold
     public void onBindViewHolder(ViewHolder holder, int position) {
         Task task = mData.get(position);
         int percentageCompleted = Math.round((float) task.currentUnits * 100 / task.totalUnits);
-        holder.myTextView.setText(task.name);
-        holder.imageView.getLayoutParams().width = convertDpToPx(context, percentageCompleted);
+        String unitString = task.totalUnits + " " + task.measureUnit;
 
+//        SimpleDateFormat format = new SimpleDateFormat("YYYY-MM-DD");
+//        Date begin_date = ("2000-00-00");
+//        Date end_date = format.parse(task.endDate);
+//        Date current_date =  Calendar.getInstance().getTime();
+//        try {
+//            Date begin_date = format.parse(task.beginDate);
+//            Date end_date = format.parse(task.endDate);
+//            Date current_date =  Calendar.getInstance().getTime();
+//        } catch (ParseException e) {
+//            e.printStackTrace();
+//        }
+//
+//        long daysPassed = current_date.getTime() - begin_date.getTime();
+//        long daysTotal = end_date.getTime() - begin_date.getTime();
+//
+//        int percentageLinear = (int)(((float)(daysPassed))/daysTotal) * 100;
+//
+//        if(percentageLinear > 100)
+//            percentageLinear = 100;
+
+        holder.myTextView.setText(task.name);
+        holder.linearProgressView.getLayoutParams().width = convertDpToPx(context, 80);
+        holder.imageView.getLayoutParams().width = convertDpToPx(context, percentageCompleted);
+        holder.unitsView.setText(unitString);
     }
 
     // total number of rows
@@ -67,12 +94,16 @@ public class TaskRowAdapter extends RecyclerView.Adapter<TaskRowAdapter.ViewHold
     // stores and recycles views as they are scrolled off screen
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView myTextView;
+        TextView unitsView;
         ImageView imageView;
+        ImageView linearProgressView;
 
         ViewHolder(View itemView) {
             super(itemView);
             myTextView = itemView.findViewById(R.id.taskTitle);
-            imageView = itemView.findViewById(R.id.totalUnitImage);
+            unitsView = itemView.findViewById(R.id.units);
+            imageView = itemView.findViewById(R.id.currentUnitImage);
+            linearProgressView = itemView.findViewById(R.id.linearProgressImage);
             itemView.setOnClickListener(this);
         }
 

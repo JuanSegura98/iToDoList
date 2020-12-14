@@ -9,6 +9,10 @@
     <string name="fifthEntry">Fifth item</string>
 
 
+
+    <string name="numberOfUnits">n Units</string>
+
+
     <string name="completedBar1">50dp</string>
     <string name="completedBar2">20dp</string>
     <string name="completedBar3">10dp</string>

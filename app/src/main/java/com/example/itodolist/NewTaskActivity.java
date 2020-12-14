@@ -50,7 +50,7 @@ public class NewTaskActivity extends AppCompatActivity {
                     Date currentTime = Calendar.getInstance().getTime();
                     String fDate = new SimpleDateFormat("YYYY-MM-DD").format(currentTime);
 
-                    repository.createTask(new Task(title, fDate, date, parts[1], amount, 2, 0 ));
+                    repository.createTask(new Task(title, fDate, date, parts[1], amount, 0, 0 ));
                     Toast.makeText(NewTaskActivity.this, "Tarea creada", Toast.LENGTH_SHORT).show();
 
                     finish();

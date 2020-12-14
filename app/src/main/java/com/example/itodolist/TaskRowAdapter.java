@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -15,6 +16,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class TaskRowAdapter extends RecyclerView.Adapter<TaskRowAdapter.ViewHolder> {
 
@@ -44,28 +46,29 @@ public class TaskRowAdapter extends RecyclerView.Adapter<TaskRowAdapter.ViewHold
         int percentageCompleted = Math.round((float) task.currentUnits * 100 / task.totalUnits);
         String unitString = task.totalUnits + " " + task.measureUnit;
 
-//        SimpleDateFormat format = new SimpleDateFormat("YYYY-MM-DD");
-//        Date begin_date = ("2000-00-00");
-//        Date end_date = format.parse(task.endDate);
-//        Date current_date =  Calendar.getInstance().getTime();
-//        try {
-//            Date begin_date = format.parse(task.beginDate);
-//            Date end_date = format.parse(task.endDate);
-//            Date current_date =  Calendar.getInstance().getTime();
-//        } catch (ParseException e) {
-//            e.printStackTrace();
-//        }
-//
-//        long daysPassed = current_date.getTime() - begin_date.getTime();
-//        long daysTotal = end_date.getTime() - begin_date.getTime();
-//
-//        int percentageLinear = (int)(((float)(daysPassed))/daysTotal) * 100;
-//
-//        if(percentageLinear > 100)
-//            percentageLinear = 100;
+        Date begin_date = new Date(2000, 01, 01);
+        Date end_date = new Date(2000, 01, 01);
+        Date current_date =  Calendar.getInstance().getTime();
+
+        try {
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+            begin_date = format.parse(task.beginDate);
+            end_date = format.parse(task.endDate);
+            long diff = end_date.getTime() - begin_date.getTime();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        long daysPassed = TimeUnit.MILLISECONDS.toDays(current_date.getTime() - begin_date.getTime());
+        long daysTotal = TimeUnit.MILLISECONDS.toDays(end_date.getTime() - begin_date.getTime());
+
+        int percentageLinear = (int) (((double) daysPassed / (double) daysTotal) * 100);
+
+        if(percentageLinear > 100)
+            percentageLinear = 100;
 
         holder.myTextView.setText(task.name);
-        holder.linearProgressView.getLayoutParams().width = convertDpToPx(context, 80);
+        holder.linearProgressView.getLayoutParams().width = convertDpToPx(context, percentageLinear);
         holder.imageView.getLayoutParams().width = convertDpToPx(context, percentageCompleted);
         holder.unitsView.setText(unitString);
     }

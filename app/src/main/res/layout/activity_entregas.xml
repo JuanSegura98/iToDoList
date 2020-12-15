@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp"
+    android:paddingBottom="16dp"
+    android:background="@android:color/holo_orange_light"
+    android:orientation="vertical"
+    tools:context=".Entregas">
+
+    <Button
+        android:id="@+id/moodlebtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:onClick="moodle"
+        android:text="@string/moodle"
+        android:textAllCaps="false"
+        android:textSize="30dp"
+        android:layout_marginTop="160dp"/>
+    <Button
+        android:id="@+id/aulawebbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:onClick="aulaweb"
+        android:text="@string/aulaweb"
+        android:textAllCaps="false"
+        android:textSize="30dp"
+        android:layout_marginTop="40dp"/>
+
+    <Button
+        android:id="@+id/webmailbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:onClick="webmail"
+        android:text="@string/webmail"
+        android:textAllCaps="false"
+        android:textSize="30dp"
+        android:layout_marginTop="40dp"/>
+
+</LinearLayout>

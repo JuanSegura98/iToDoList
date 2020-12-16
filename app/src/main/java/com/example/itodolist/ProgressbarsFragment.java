@@ -47,10 +47,22 @@ public class ProgressbarsFragment extends Fragment {
         fab = (FloatingActionButton) view.findViewById(R.id.floating_action_button);
         taskListView = (RecyclerView) view.findViewById(R.id.taskList);
         layout = (ConstraintLayout) view.findViewById(R.id.taskConstraintLayout);
-        List<Task> tasks = getTasks();
+        final List<Task> tasks = getTasks();
         TaskRowAdapter customAdapter = new TaskRowAdapter(getContext(), tasks);
+        customAdapter.setClickListener(new TaskRowAdapter.ItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                final Task task = tasks.get(position);
+                Intent intent = new Intent(getActivity(), ModifyTaskActivity.class);
+                intent.putExtra("task", task);
+                startActivity(intent);
+            }
+        });
         taskListView.setAdapter(customAdapter);
         taskListView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+
+
         enableSwipeToDeleteAndUndo();
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,8 +98,17 @@ public class ProgressbarsFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        List<Task> tasks = getTasks();
+        final List<Task> tasks = getTasks();
         TaskRowAdapter customAdapter = new TaskRowAdapter(getContext(), tasks);
+        customAdapter.setClickListener(new TaskRowAdapter.ItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                final Task task = tasks.get(position);
+                Intent intent = new Intent(getActivity(), ModifyTaskActivity.class);
+                intent.putExtra("task", task);
+                startActivity(intent);
+            }
+        });
         taskListView.setAdapter(customAdapter);
     }
 

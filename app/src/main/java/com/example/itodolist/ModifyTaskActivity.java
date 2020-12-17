@@ -14,14 +14,34 @@ public class ModifyTaskActivity extends AppCompatActivity {
     TextInputLayout dueDateField;
     TasksRepository repository;
 
+    Task task;
+
+    public ModifyTaskActivity() {
+
+    }
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modify_task);
+
+        Bundle extras = getIntent().getExtras();
+
+
+        if (extras != null) {
+            task = extras.getParcelable("task");
+            // and get whatever type user account id is
+        }
         // Inflate elements
         createTaskButton = (Button) findViewById(R.id.createTaskButton);
-        titleField = (TextInputLayout)  findViewById(R.id.taskTitle);
-        dueDateField = (TextInputLayout)  findViewById(R.id.taskDate);
-        currentUnits = (TextInputLayout)  findViewById(R.id.taskUnits);
+
+        titleField = (TextInputLayout) findViewById(R.id.taskTitle);
+        dueDateField = (TextInputLayout) findViewById(R.id.taskDate);
+        currentUnits = (TextInputLayout) findViewById(R.id.numberOfUnits);
+
+        titleField.getEditText().setText(task.name);
+        currentUnits.getEditText().setText(String.valueOf(task.totalUnits));
+        dueDateField.getEditText().setText(task.endDate);
     }
 }

@@ -41,7 +41,7 @@ public class ModifyTaskActivity extends AppCompatActivity {
         currentUnits = (TextInputLayout) findViewById(R.id.numberOfUnits);
 
         titleField.getEditText().setText(task.name);
-        currentUnits.getEditText().setText(String.valueOf(task.totalUnits));
+        currentUnits.getEditText().setText(String.valueOf(task.currentUnits));
         dueDateField.getEditText().setText(task.endDate);
     }
 }

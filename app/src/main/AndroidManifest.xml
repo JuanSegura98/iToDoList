@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.itodolist">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,11 +12,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ModifyTaskActivity"></activity>
+        <activity android:name=".ModifyTaskActivity" />
         <activity
             android:name=".NewTaskActivity"
-            android:label="New Task"></activity>
-        <activity android:name=".MainActivity"></activity>
+            android:label="New Task" />
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".PortadaActivity"
             android:theme="@style/AppTheme.NoActionBar">

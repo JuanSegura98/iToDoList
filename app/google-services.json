@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "309001965547",
+    "project_id": "android-todo-acca6",
+    "storage_bucket": "android-todo-acca6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:309001965547:android:ce9a2e3df9460916f093ae",
+        "android_client_info": {
+          "package_name": "com.example.itodolist"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "309001965547-r3iu6m442sarnko7kfik9bn0db6t3g4l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyConFuWbQDPFpENZeNtb2MDUQy1Cl3z9NM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "309001965547-r3iu6m442sarnko7kfik9bn0db6t3g4l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

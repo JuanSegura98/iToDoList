@@ -4,17 +4,23 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
@@ -30,6 +36,9 @@ public class ProgressbarsFragment extends Fragment {
     TasksRepository repository;
     RecyclerView taskListView;
     ConstraintLayout layout;
+
+    private DrawerLayout drawer;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -62,7 +71,6 @@ public class ProgressbarsFragment extends Fragment {
         taskListView.setLayoutManager(new LinearLayoutManager(getContext()));
 
 
-
         enableSwipeToDeleteAndUndo();
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,6 +79,31 @@ public class ProgressbarsFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
+
+        Toolbar toolbar = (Toolbar) view.findViewById(R.id.toolbar_main);
+        final MainActivity activity = (MainActivity) getActivity();
+
+        activity.setSupportActionBar(toolbar);
+
+        drawer = view.findViewById(R.id.drawer_layout);
+
+        activity.toggle = new ActionBarDrawerToggle(activity, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(activity.toggle);
+
+        activity.getSupportActionBar().setHomeButtonEnabled(true);
+        activity.toggle.syncState();
+        NavigationView navigationView = (NavigationView) view.findViewById(R.id.nav_view);
+
+        navigationView.getMenu().findItem(R.id.nav_item_log_out).setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                activity.onNavigationItemSelected(menuItem);
+                return true;
+            }
+        });
+
+        navigationView.setNavigationItemSelectedListener(activity);
         return view;
     }
 

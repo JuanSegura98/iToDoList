@@ -55,8 +55,7 @@ public class NewTaskActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 Toast.makeText(NewTaskActivity.this, "Tarea creada", Toast.LENGTH_SHORT).show();
-
-                finish();
+                NewTaskActivity.this.finish();
 
             }
         });

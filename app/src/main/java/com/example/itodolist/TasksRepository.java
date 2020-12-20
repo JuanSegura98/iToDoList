@@ -83,6 +83,7 @@ public class TasksRepository {
                     final String measureunit = (String) data.get("measureunit");
                     final Long totalunits = (Long) data.get("totalunits");
                     final Long currentunits = (Long) data.get("currentunit");
+                    if(totalunits == null || currentunits == null) continue;
                     tasks.add(new Task(name, begindate, enddate, measureunit, totalunits.intValue(), currentunits.intValue(), progressbar, document.getId()));
                     Log.d("FIREBASE", document.getId() + " => " + document.getData());
 

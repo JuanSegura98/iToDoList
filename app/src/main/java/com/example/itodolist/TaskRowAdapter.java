@@ -72,8 +72,12 @@ public class TaskRowAdapter extends RecyclerView.Adapter<TaskRowAdapter.ViewHold
             percentageLinear = 100;
 
         holder.myTextView.setText(task.name);
-        holder.linearProgressView.getLayoutParams().width = convertDpToPx(context, percentageLinear);
-        holder.imageView.getLayoutParams().width = convertDpToPx(context, percentageCompleted);
+        ViewGroup.LayoutParams params =  holder.linearProgressView.getLayoutParams();
+        params.width = convertDpToPx(context, percentageLinear);
+        holder.linearProgressView.setLayoutParams(params);
+        ViewGroup.LayoutParams params2 =  holder.imageView.getLayoutParams();
+        params2.width = convertDpToPx(context, percentageCompleted);
+        holder.imageView.setLayoutParams(params2);
         holder.unitsView.setText(unitString);
     }
 

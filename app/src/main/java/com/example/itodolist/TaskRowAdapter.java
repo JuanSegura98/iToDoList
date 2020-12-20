@@ -2,6 +2,7 @@ package com.example.itodolist;
 
 import android.content.Context;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +25,10 @@ public class TaskRowAdapter extends RecyclerView.Adapter<TaskRowAdapter.ViewHold
     private LayoutInflater mInflater;
     private ItemClickListener mClickListener;
     private Context context;
+
+    public void setItems(List<Task> items) {
+        this.mData = items;
+    }
 
     // data is passed into the constructor
     TaskRowAdapter(Context context, List<Task> data) {
@@ -55,7 +60,7 @@ public class TaskRowAdapter extends RecyclerView.Adapter<TaskRowAdapter.ViewHold
             begin_date = format.parse(task.beginDate);
             end_date = format.parse(task.endDate);
         } catch (ParseException e) {
-            e.printStackTrace();
+            Log.e("ERROR:Parsing dates", "");
         }
 
         long daysPassed = TimeUnit.MILLISECONDS.toDays(current_date.getTime() - begin_date.getTime());

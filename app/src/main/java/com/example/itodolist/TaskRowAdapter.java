@@ -72,10 +72,13 @@ public class TaskRowAdapter extends RecyclerView.Adapter<TaskRowAdapter.ViewHold
         long daysPassed = TimeUnit.MILLISECONDS.toDays(current_date.getTime() - begin_date.getTime());
         long daysTotal = TimeUnit.MILLISECONDS.toDays(end_date.getTime() - begin_date.getTime());
 
-        int percentageLinear = (int) (((double) daysPassed / (double) daysTotal) * 100) + 5;
-
-        if(percentageLinear > 100)
-            percentageLinear = 100;
+        int percentageLinear = (int) (((double) daysPassed / (double) daysTotal) * 100);
+        if(percentageLinear <= 0)
+            percentageLinear = 0;
+        else {
+            if (percentageLinear > 100)
+                percentageLinear = 100;
+        }
 
         holder.myTextView.setText(task.name);
         ViewGroup.LayoutParams params =  holder.linearProgressView.getLayoutParams();

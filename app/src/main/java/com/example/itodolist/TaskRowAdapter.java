@@ -49,7 +49,7 @@ public class TaskRowAdapter extends RecyclerView.Adapter<TaskRowAdapter.ViewHold
     public void onBindViewHolder(ViewHolder holder, int position) {
         Task task = mData.get(position);
         int percentageCompleted = Math.round((float) task.currentUnits * 100 / task.totalUnits);
-        String unitString = task.totalUnits + " " + task.measureUnit;
+        String unitString = task.currentUnits + "/" + task.totalUnits + " " + task.measureUnit;
 
         Date begin_date = new Date(2000, 01, 01);
         Date end_date = new Date(2000, 01, 01);

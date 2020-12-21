@@ -21,7 +21,7 @@ public class PortadaActivity extends AppCompatActivity {
 
 
     public static final int RC_SIGN_IN = 20;
-    private Calendar AuthUI;
+
 
 
     @Override

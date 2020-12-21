@@ -29,8 +29,17 @@
         android:id="@+id/startBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Inicio"
+        android:text="Tareas"
         android:textSize="20dp"
         android:textAllCaps="false"
         android:layout_marginTop="10dp"/>
+
+    <Button
+        android:id="@+id/EntregasBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Entrega"
+        android:textSize="20dp"
+        android:textAllCaps="false"
+        android:layout_marginTop="1dp"/>
 </LinearLayout>

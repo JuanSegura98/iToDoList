@@ -18,7 +18,9 @@ import java.util.List;
 
 public class PortadaActivity extends AppCompatActivity {
 
+
     public static final int RC_SIGN_IN = 20;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,10 +28,17 @@ public class PortadaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_portada);
 
         Button button = (Button) findViewById(R.id.startBtn);
+        Button button2 = (Button) findViewById(R.id.EntregasBtn);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openMainActivity();
+            }
+        });
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openEntregas();
             }
         });
     }
@@ -81,4 +90,10 @@ public class PortadaActivity extends AppCompatActivity {
             }
         }
     }
+    public void openEntregas() {
+        Intent intent = new Intent(this, Entregas.class);
+        startActivity(intent);
+        this.finish();
+    }
+
 }

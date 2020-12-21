@@ -45,6 +45,7 @@ public class NewTaskActivity extends AppCompatActivity {
                 final String units = unitsField.getEditText().getText().toString();
                 String[] parts = units.split(" ");
 
+
                 int amount = Integer.parseInt(parts[0]);
 
                 Date currentTime = Calendar.getInstance().getTime();

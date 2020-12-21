@@ -23,6 +23,7 @@ public class NewTaskActivity extends AppCompatActivity {
     TextInputLayout dueDateField;
     TextInputLayout unitsField;
     TextInputLayout measureUnitsField;
+    TextInputLayout notesField;
     TasksRepository repository;
 
     @Override
@@ -35,6 +36,7 @@ public class NewTaskActivity extends AppCompatActivity {
         dueDateField = (TextInputLayout) findViewById(R.id.taskDate);
         unitsField = (TextInputLayout) findViewById(R.id.taskUnits);
         measureUnitsField = (TextInputLayout) findViewById(R.id.taskMeasureUnits);
+        notesField = (TextInputLayout) findViewById(R.id.taskNotes);
 
         // Init repository
         repository = new TasksRepository(getApplicationContext());
@@ -53,6 +55,7 @@ public class NewTaskActivity extends AppCompatActivity {
                 final String date = dueDateField.getEditText().getText().toString();
                 final String units = unitsField.getEditText().getText().toString();
                 final String measureUnits = measureUnitsField.getEditText().getText().toString();
+                final String notes = notesField.getEditText().getText().toString();
 
                 int amount;
                 try {
@@ -66,7 +69,7 @@ public class NewTaskActivity extends AppCompatActivity {
                 Date currentTime = Calendar.getInstance().getTime();
                 String fDate = new SimpleDateFormat("yyyy-MM-dd").format(currentTime);
                 try {
-                    repository.createTask(new Task(title, fDate, date, measureUnits, amount, 0, 0, "", ""));
+                    repository.createTask(new Task(title, fDate, date, measureUnits, amount, 0, 0, "", notes));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

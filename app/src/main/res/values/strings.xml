@@ -25,6 +25,7 @@
     <string name="due_date_hint">Due date</string>
     <string name="units_hint">Total units (10, 500...)</string>
     <string name="measure_units_hint">Measure units (chapters, pages, subtasks)</string>
+    <string name="notes_hint">Extra notes</string>
 
     <string name="modify_task">Modify Task</string>
     <string name="modify_units_hint">Current units</string>

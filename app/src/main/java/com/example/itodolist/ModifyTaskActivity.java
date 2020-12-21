@@ -22,6 +22,7 @@ public class ModifyTaskActivity extends AppCompatActivity {
     TextInputLayout totalUnits;
     TextInputLayout measureUnits;
     TextInputLayout dueDateField;
+    TextInputLayout notesField;
     TasksRepository repository;
 
     Task task;
@@ -51,12 +52,14 @@ public class ModifyTaskActivity extends AppCompatActivity {
         currentUnits = (TextInputLayout) findViewById(R.id.numberOfUnits);
         totalUnits = (TextInputLayout) findViewById(R.id.numberOfTotalUnits);
         measureUnits = (TextInputLayout) findViewById(R.id.measureUnits);
+        notesField = (TextInputLayout) findViewById(R.id.taskNotes);
 
         titleField.getEditText().setText(task.name);
         currentUnits.getEditText().setText(String.valueOf(task.currentUnits));
         totalUnits.getEditText().setText(String.valueOf(task.totalUnits));
         measureUnits.getEditText().setText(String.valueOf(task.measureUnit));
         dueDateField.getEditText().setText(task.endDate);
+        notesField.getEditText().setText(task.notes);
 
         dueDateField.getEditText().setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,6 +76,7 @@ public class ModifyTaskActivity extends AppCompatActivity {
                 final String title = titleField.getEditText().getText().toString();
                 final String date = dueDateField.getEditText().getText().toString();
                 final String mUnits = measureUnits.getEditText().getText().toString();
+                final String notes = notesField.getEditText().getText().toString();
 
                 int cUnits = 0;
                 int tUnits = 0;
@@ -88,7 +92,7 @@ public class ModifyTaskActivity extends AppCompatActivity {
                 String fDate = new SimpleDateFormat("yyyy-MM-dd").format(currentTime);
                 try {
 //                    repository.modifyTask(new Task(title, fDate, date, parts[1], task.totalUnits , amount, 0, task.id));
-                    repository.modifyTask(new Task(title, fDate, date, mUnits, tUnits , cUnits, 0, task.id, ""));
+                    repository.modifyTask(new Task(title, fDate, date, mUnits, tUnits , cUnits, 0, task.id, notes));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

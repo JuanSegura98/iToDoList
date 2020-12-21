@@ -21,7 +21,7 @@ public class PortadaActivity extends AppCompatActivity {
 
 
     public static final int RC_SIGN_IN = 20;
-    private Calendar AuthUI;
+
 
 
     @Override
@@ -55,7 +55,7 @@ public class PortadaActivity extends AppCompatActivity {
         if (user == null) {
 // Create and launch sign-in intent
             startActivityForResult(
-                    Calendar.getInstance()
+                    AuthUI.getInstance()
                             .createSignInIntentBuilder()
                             .setAvailableProviders(providers)
                             .build(),

@@ -13,6 +13,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.List;
 
 
@@ -20,6 +21,7 @@ public class PortadaActivity extends AppCompatActivity {
 
 
     public static final int RC_SIGN_IN = 20;
+    private Calendar AuthUI;
 
 
     @Override
@@ -53,7 +55,7 @@ public class PortadaActivity extends AppCompatActivity {
         if (user == null) {
 // Create and launch sign-in intent
             startActivityForResult(
-                    AuthUI.getInstance()
+                    Calendar.getInstance()
                             .createSignInIntentBuilder()
                             .setAvailableProviders(providers)
                             .build(),

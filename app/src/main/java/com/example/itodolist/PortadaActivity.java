@@ -55,7 +55,7 @@ public class PortadaActivity extends AppCompatActivity {
         if (user == null) {
 // Create and launch sign-in intent
             startActivityForResult(
-                    Calendar.getInstance()
+                    AuthUI.getInstance()
                             .createSignInIntentBuilder()
                             .setAvailableProviders(providers)
                             .build(),

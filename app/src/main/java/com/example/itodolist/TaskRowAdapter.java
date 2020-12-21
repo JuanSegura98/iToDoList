@@ -2,6 +2,7 @@ package com.example.itodolist;
 
 import android.content.Context;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +25,10 @@ public class TaskRowAdapter extends RecyclerView.Adapter<TaskRowAdapter.ViewHold
     private LayoutInflater mInflater;
     private ItemClickListener mClickListener;
     private Context context;
+
+    public void setItems(List<Task> items) {
+        this.mData = items;
+    }
 
     // data is passed into the constructor
     TaskRowAdapter(Context context, List<Task> data) {
@@ -55,7 +60,7 @@ public class TaskRowAdapter extends RecyclerView.Adapter<TaskRowAdapter.ViewHold
             begin_date = format.parse(task.beginDate);
             end_date = format.parse(task.endDate);
         } catch (ParseException e) {
-            e.printStackTrace();
+            Log.e("ERROR:Parsing dates", "");
         }
 
         long daysPassed = TimeUnit.MILLISECONDS.toDays(current_date.getTime() - begin_date.getTime());
@@ -67,8 +72,12 @@ public class TaskRowAdapter extends RecyclerView.Adapter<TaskRowAdapter.ViewHold
             percentageLinear = 100;
 
         holder.myTextView.setText(task.name);
-        holder.linearProgressView.getLayoutParams().width = convertDpToPx(context, percentageLinear);
-        holder.imageView.getLayoutParams().width = convertDpToPx(context, percentageCompleted);
+        ViewGroup.LayoutParams params =  holder.linearProgressView.getLayoutParams();
+        params.width = convertDpToPx(context, percentageLinear);
+        holder.linearProgressView.setLayoutParams(params);
+        ViewGroup.LayoutParams params2 =  holder.imageView.getLayoutParams();
+        params2.width = convertDpToPx(context, percentageCompleted);
+        holder.imageView.setLayoutParams(params2);
         holder.unitsView.setText(unitString);
     }
 

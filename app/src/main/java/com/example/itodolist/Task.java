@@ -5,6 +5,7 @@ import android.os.Parcelable;
 
 public class Task implements Parcelable {
     final String name;
+    final String id;
     final String beginDate;
     final String endDate;
     final String measureUnit;
@@ -12,7 +13,7 @@ public class Task implements Parcelable {
     final int currentUnits;
     final int progressBar;
 
-    public Task(String name, String beginDate, String endDate, String measureUnit, int totalUnits, int currentUnits, int progressBar) {
+    public Task(String name, String beginDate, String endDate, String measureUnit, int totalUnits, int currentUnits, int progressBar, String id) {
         this.name = name;
         this.beginDate = beginDate;
         this.endDate = endDate;
@@ -20,6 +21,7 @@ public class Task implements Parcelable {
         this.totalUnits = totalUnits;
         this.currentUnits = currentUnits;
         this.progressBar = progressBar;
+        this.id = id;
     }
 
     // Añadimos parcelable para poder enviar el objeto entre activities
@@ -31,6 +33,7 @@ public class Task implements Parcelable {
         totalUnits = in.readInt();
         currentUnits = in.readInt();
         progressBar = in.readInt();
+        id = in.readString();
     }
 
     @Override
@@ -47,6 +50,7 @@ public class Task implements Parcelable {
         dest.writeInt(totalUnits);
         dest.writeInt(currentUnits);
         dest.writeInt(progressBar);
+        dest.writeString(id);
     }
 
     @SuppressWarnings("unused")

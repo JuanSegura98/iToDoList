@@ -27,7 +27,13 @@
 
     <string name="modify_task">Modify Task</string>
     <string name="modify_units_hint">Current units</string>
+
     <string name="moodle">Moodle</string>
     <string name="aulaweb">Aulaweb</string>
     <string name="webmail">Webmail</string>
+
+
+    <string name="navigation_drawer_open">Open</string>
+    <string name="navigation_drawer_close">Close</string>
+
 </resources>

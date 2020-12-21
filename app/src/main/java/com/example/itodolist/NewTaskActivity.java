@@ -28,9 +28,9 @@ public class NewTaskActivity extends AppCompatActivity {
         setContentView(R.layout.activity_new_task);
         // Set views
         createTaskButton = (Button) findViewById(R.id.createTaskButton);
-        titleField = (TextInputLayout)  findViewById(R.id.taskTitle);
-        dueDateField = (TextInputLayout)  findViewById(R.id.taskDate);
-        unitsField = (TextInputLayout)  findViewById(R.id.taskUnits);
+        titleField = (TextInputLayout) findViewById(R.id.taskTitle);
+        dueDateField = (TextInputLayout) findViewById(R.id.taskDate);
+        unitsField = (TextInputLayout) findViewById(R.id.taskUnits);
 
         // Init repository
         repository = new TasksRepository(getApplicationContext());
@@ -39,23 +39,24 @@ public class NewTaskActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+
+                final String title = titleField.getEditText().getText().toString();
+                final String date = dueDateField.getEditText().getText().toString();
+                final String units = unitsField.getEditText().getText().toString();
+                String[] parts = units.split(" ");
+
+                int amount = Integer.parseInt(parts[0]);
+
+                Date currentTime = Calendar.getInstance().getTime();
+                String fDate = new SimpleDateFormat("yyyy-MM-dd").format(currentTime);
                 try {
-                    final String title =  titleField.getEditText().getText().toString();
-                    final String date =  dueDateField.getEditText().getText().toString();
-                    final String units =  unitsField.getEditText().getText().toString();
-                    String[] parts = units.split(" ");
-
-                    int amount = Integer.parseInt(parts[0]);
-
-                    Date currentTime = Calendar.getInstance().getTime();
-                    String fDate = new SimpleDateFormat("yyyy-MM-dd").format(currentTime);
-                    repository.createTask(new Task(title, fDate, date, parts[1], amount, 0, 0 ));
-                    Toast.makeText(NewTaskActivity.this, "Tarea creada", Toast.LENGTH_SHORT).show();
-
-                    finish();
+                    repository.createTask(new Task(title, fDate, date, parts[1], amount, 0, 0, ""));
                 } catch (Exception e) {
-                    Toast.makeText(NewTaskActivity.this, "Hubo un problema al crear la tarea", Toast.LENGTH_SHORT).show();
+                    e.printStackTrace();
                 }
+                Toast.makeText(NewTaskActivity.this, "Tarea creada", Toast.LENGTH_SHORT).show();
+                NewTaskActivity.this.finish();
+
             }
         });
 

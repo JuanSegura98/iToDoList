@@ -17,6 +17,8 @@ public class ModifyTaskActivity extends AppCompatActivity {
     Button createTaskButton;
     TextInputLayout titleField;
     TextInputLayout currentUnits;
+    TextInputLayout totalUnits;
+    TextInputLayout measureUnits;
     TextInputLayout dueDateField;
     TasksRepository repository;
 
@@ -45,9 +47,13 @@ public class ModifyTaskActivity extends AppCompatActivity {
         titleField = (TextInputLayout) findViewById(R.id.taskTitle);
         dueDateField = (TextInputLayout) findViewById(R.id.taskDate);
         currentUnits = (TextInputLayout) findViewById(R.id.numberOfUnits);
+        totalUnits = (TextInputLayout) findViewById(R.id.numberOfTotalUnits);
+        measureUnits = (TextInputLayout) findViewById(R.id.measureUnits);
 
         titleField.getEditText().setText(task.name);
-        currentUnits.getEditText().setText(String.valueOf(task.totalUnits) + " " + String.valueOf(task.measureUnit));
+        currentUnits.getEditText().setText(String.valueOf(task.currentUnits));
+        totalUnits.getEditText().setText(String.valueOf(task.totalUnits));
+        measureUnits.getEditText().setText(String.valueOf(task.measureUnit));
         dueDateField.getEditText().setText(task.endDate);
 
         createTaskButton.setOnClickListener(new View.OnClickListener() {
@@ -57,16 +63,23 @@ public class ModifyTaskActivity extends AppCompatActivity {
 
                 final String title = titleField.getEditText().getText().toString();
                 final String date = dueDateField.getEditText().getText().toString();
-                final String units = currentUnits.getEditText().getText().toString();
-                String[] parts = units.split(" ");
+                final String mUnits = measureUnits.getEditText().getText().toString();
 
-                int amount = Integer.parseInt(parts[0]);
+                int cUnits = 0;
+                int tUnits = 0;
+
+                try {
+                    cUnits = Integer.parseInt(currentUnits.getEditText().getText().toString());
+                    tUnits = Integer.parseInt(totalUnits.getEditText().getText().toString());
+                } catch(Exception e){
+                    Toast.makeText(ModifyTaskActivity.this, "Por favor, introduce las unidades", Toast.LENGTH_SHORT).show();
+                }
 
                 Date currentTime = Calendar.getInstance().getTime();
                 String fDate = new SimpleDateFormat("yyyy-MM-dd").format(currentTime);
                 try {
 //                    repository.modifyTask(new Task(title, fDate, date, parts[1], task.totalUnits , amount, 0, task.id));
-                    repository.modifyTask(new Task(title, fDate, date, parts[1], task.totalUnits , amount, 0, task.id));
+                    repository.modifyTask(new Task(title, fDate, date, mUnits, tUnits , cUnits, 0, task.id));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -77,4 +90,6 @@ public class ModifyTaskActivity extends AppCompatActivity {
             }
         });
     }
+
+
 }

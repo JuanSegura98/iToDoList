@@ -27,6 +27,8 @@
 
     <string name="modify_task">Modify Task</string>
     <string name="modify_units_hint">Current units</string>
+    <string name="modify_total_units_hint">Total units</string>
+    <string name="modify_measure_units_hint">Measure units</string>
 
     <string name="moodle">Moodle</string>
     <string name="aulaweb">Aulaweb</string>

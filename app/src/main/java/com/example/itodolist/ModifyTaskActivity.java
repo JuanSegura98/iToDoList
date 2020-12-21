@@ -2,9 +2,11 @@ package com.example.itodolist;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputLayout;
@@ -56,6 +58,13 @@ public class ModifyTaskActivity extends AppCompatActivity {
         measureUnits.getEditText().setText(String.valueOf(task.measureUnit));
         dueDateField.getEditText().setText(task.endDate);
 
+        dueDateField.getEditText().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showDatePickerDialog();
+            }
+        });
+
         createTaskButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -89,6 +98,20 @@ public class ModifyTaskActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+
+    private void showDatePickerDialog() {
+        DatePickerFragment newFragment =  DatePickerFragment.newInstance(new DatePickerDialog.OnDateSetListener(
+
+        ) {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                String date = String.format("%04d", year)  + "-" + String.format("%02d", month + 1) + "-" +  String.format("%02d", day);
+                dueDateField.getEditText().setText(date);
+            }
+        });
+        newFragment.show(getSupportFragmentManager(), "datePicker");
     }
 
 

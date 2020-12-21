@@ -17,12 +17,13 @@ import java.util.Calendar;
 import java.util.List;
 
 
+// Pagina inicial de la aplicacion. Nos permite navegar a la lista de tareas si se ha iniciado sesion previamente, sino
+// se navegara a la pantalla de inicio de sesion.
+// Tambien nos permite navegar a Entregas aunque no hayamos iniciado sesion
 public class PortadaActivity extends AppCompatActivity {
 
 
     public static final int RC_SIGN_IN = 20;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,10 +48,9 @@ public class PortadaActivity extends AppCompatActivity {
 
     public void openMainActivity() {
         List<AuthUI.IdpConfig> providers = Arrays.asList(
-                new AuthUI.IdpConfig.EmailBuilder().build(),
-                new AuthUI.IdpConfig.GoogleBuilder().build()
-
-                );
+                new AuthUI.IdpConfig.EmailBuilder().build()
+             //   new AuthUI.IdpConfig.GoogleBuilder().build()
+        );
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user == null) {
 // Create and launch sign-in intent

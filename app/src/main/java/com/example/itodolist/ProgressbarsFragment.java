@@ -31,6 +31,11 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import java.util.ArrayList;
 import java.util.List;
 
+// Fragment principal que contiene la lista de tareas
+//    - TasksRepository nos permite leer y escribir las tareas en nuestra base de datos
+//    - Drawer, se accede desde el boton izquierdo de la barra de navegacion y nos permitira cerrar sesion
+//    - RecyclerView, es una lista de vistas avanzada (https://developer.android.com/guide/topics/ui/layout/recyclerview?hl=es)
+//       el contenido que se muestra se gestiona a traves del TaskRowAdapter
 public class ProgressbarsFragment extends Fragment {
 
     public ProgressbarsFragment() {
@@ -149,7 +154,7 @@ public class ProgressbarsFragment extends Fragment {
 
     @Override
     public void onDestroy() {
-        repository.close();
+        //repository.close();
         super.onDestroy();
     }
 

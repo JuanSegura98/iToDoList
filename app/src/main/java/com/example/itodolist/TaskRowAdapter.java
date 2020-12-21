@@ -19,6 +19,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+// Clase que gestiona el contenido que se muestra en un RecyclerView
+// Se encarga de para cada fila añadir una tarea de la lista mData.
+
 public class TaskRowAdapter extends RecyclerView.Adapter<TaskRowAdapter.ViewHolder> {
 
     public List<Task> mData;

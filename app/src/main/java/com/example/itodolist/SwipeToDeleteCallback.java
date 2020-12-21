@@ -15,6 +15,7 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
+// Clase que implementa el 'swipe to delete': Eliminar una tarea de la lista deslizando la fila hacia la izquierda
 abstract public class SwipeToDeleteCallback extends ItemTouchHelper.Callback {
 
     Context mContext;

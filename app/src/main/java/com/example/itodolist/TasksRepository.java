@@ -28,38 +28,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.Executor;
 
+
+
+// Usando esta clase se guardan las tareas en FIREBASE
+// Para guardar en la base de datos local usar TasksDatabaseRepository de forma similar a esta
 public class TasksRepository {
 
-    private final TasksDatabase admin;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-    public TasksRepository(Context context) {
-
-        admin = new TasksDatabase(context, "administracion", null, 1);
-    }
-
-   /* List<Task> getTasks() {
-
-
-        List<Task> tasks = new ArrayList<Task>();
-        SQLiteDatabase db = admin.getWritableDatabase();
-        Cursor result = db.rawQuery("select progressbar, name, begindate, enddate, measureunit, totalunits, currentunits from progressbars", null);
-        if (result.moveToFirst()) {
-            do {
-                final int progressbar = result.getInt(0);
-                final String name = result.getString(1);
-                final String begindate = result.getString(2);
-                final String enddate = result.getString(3);
-                final String measureunit = result.getString(4);
-                final int totalunits = result.getInt(5);
-                final int currentunits = result.getInt(6);
-                tasks.add(new Task(name, begindate, enddate, measureunit, totalunits, currentunits, progressbar, null));
-            } while (result.moveToNext());
-        }
-        db.close();
-        return tasks;
-    }
-*/
+    public TasksRepository(Context context) {}
 
     void getTasks(final EventListener<List<Task>> listener) {
 
@@ -93,9 +70,7 @@ public class TasksRepository {
 
             }
         });
-
-
-
+        
     }
 
     void createTask(Task task) throws Exception {
@@ -125,21 +100,8 @@ public class TasksRepository {
                         Log.w("FIREBASE", "Error adding document", e);
                     }
                 });
-        return;
-      /*  long rowInserted;
-        final SQLiteDatabase db = admin.getWritableDatabase();
-        final ContentValues registro = new ContentValues();
-        registro.put("name", task.name);
-        registro.put("begindate", task.beginDate);
-        registro.put("enddate", task.endDate);
-        registro.put("measureunit", task.measureUnit);
-        registro.put("totalunits", task.totalUnits);
-        registro.put("currentunits", task.currentUnits);
-        rowInserted = db.insert("progressbars", null, registro);
-        if (rowInserted == -1)
-            throw new Exception("Error al almacenar los datos");
 
-        db.close();*/
+
     }
 
     void modifyTask(final Task task) throws Exception {
@@ -169,17 +131,7 @@ public class TasksRepository {
                     }
                 });
         return;
-      /*  long rowInserted;
-        final SQLiteDatabase db = admin.getWritableDatabase();
-        final ContentValues registro = new ContentValues();
-        registro.put("name", task.name);
-        registro.put("enddate", task.endDate);
-        registro.put("currentunits", task.currentUnits);
-        rowInserted = db.update("progressbars", registro, "progressbar" + "=" + task.progressBar, null);
-        if (rowInserted == -1)
-            throw new Exception("Error al almacenar los datos");
 
-        db.close();*/
     }
 
     void deleteTask(final Task task) throws Exception {
@@ -197,18 +149,10 @@ public class TasksRepository {
                         Log.w("FIREBASE", "Error adding document", e);
                     }
                 });
-        /*long rowDeleted;
-        final SQLiteDatabase db = admin.getWritableDatabase();
 
-        rowDeleted = db.delete("progressbars", "progressbar" + "=" + task.progressBar, null);
-        if (rowDeleted == -1)
-            throw new Exception("Error al eliminar tarea");
-        db.close();*/
     }
 
-    void close() {
-        admin.close();
-    }
+
 }
 
 

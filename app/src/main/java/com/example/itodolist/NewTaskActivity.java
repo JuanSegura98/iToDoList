@@ -16,6 +16,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+// Pagina que nos permite crear una tarea.
 public class NewTaskActivity extends AppCompatActivity {
 
     Button createTaskButton;
@@ -96,7 +97,7 @@ public class NewTaskActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
-        repository.close();
+       // repository.close();
         super.onDestroy();
 
     }

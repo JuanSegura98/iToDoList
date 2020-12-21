@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 
+// Pagina con acceso directos directos a las plataformas de entrega de la etsii
 public class Entregas extends AppCompatActivity {
 
     @Override

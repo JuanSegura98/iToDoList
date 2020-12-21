@@ -7,7 +7,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 import android.widget.Toast;
 
-
+// Clase que representa nuestra base de datos local.
+// En la version final de la aplicacion no la usamos
 public class TasksDatabase extends SQLiteOpenHelper {
     public TasksDatabase(Context context, String nombre,
                     SQLiteDatabase.CursorFactory factory,

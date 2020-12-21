@@ -3,6 +3,7 @@ package com.example.itodolist;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+// Clase que representa una tarea a realizar
 public class Task implements Parcelable {
     final String name;
     final String id;

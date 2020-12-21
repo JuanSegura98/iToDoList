@@ -13,6 +13,7 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+// Página principal, para ver el contenido ir a ProgressbarsFragment
 public class MainActivity extends AppCompatActivity  implements NavigationView.OnNavigationItemSelectedListener {
 
     public ActionBarDrawerToggle toggle;

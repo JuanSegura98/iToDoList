@@ -15,6 +15,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+// Pagina que nos permite editar una tarea.
 public class ModifyTaskActivity extends AppCompatActivity {
     Button createTaskButton;
     TextInputLayout titleField;
@@ -72,7 +73,6 @@ public class ModifyTaskActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-
                 final String title = titleField.getEditText().getText().toString();
                 final String date = dueDateField.getEditText().getText().toString();
                 final String mUnits = measureUnits.getEditText().getText().toString();
@@ -94,7 +94,7 @@ public class ModifyTaskActivity extends AppCompatActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                Toast.makeText(ModifyTaskActivity.this, "Tarea creada", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ModifyTaskActivity.this, "Tarea modificada", Toast.LENGTH_SHORT).show();
 
                 finish();
 

@@ -49,6 +49,12 @@ public class TaskRowAdapter extends RecyclerView.Adapter<TaskRowAdapter.ViewHold
     public void onBindViewHolder(ViewHolder holder, int position) {
         Task task = mData.get(position);
         int percentageCompleted = Math.round((float) task.currentUnits * 100 / task.totalUnits);
+        if(percentageCompleted > 0){
+            percentageCompleted += 5;
+            if(percentageCompleted > 100)
+                percentageCompleted = 100;
+        }
+
         String unitString = task.currentUnits + "/" + task.totalUnits + " " + task.measureUnit;
 
         Date begin_date = new Date(2000, 01, 01);
@@ -66,7 +72,7 @@ public class TaskRowAdapter extends RecyclerView.Adapter<TaskRowAdapter.ViewHold
         long daysPassed = TimeUnit.MILLISECONDS.toDays(current_date.getTime() - begin_date.getTime());
         long daysTotal = TimeUnit.MILLISECONDS.toDays(end_date.getTime() - begin_date.getTime());
 
-        int percentageLinear = (int) (((double) daysPassed / (double) daysTotal) * 100);
+        int percentageLinear = (int) (((double) daysPassed / (double) daysTotal) * 100) + 5;
 
         if(percentageLinear > 100)
             percentageLinear = 100;

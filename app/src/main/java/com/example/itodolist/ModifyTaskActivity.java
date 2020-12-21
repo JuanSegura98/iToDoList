@@ -88,11 +88,9 @@ public class ModifyTaskActivity extends AppCompatActivity {
                     Toast.makeText(ModifyTaskActivity.this, "Por favor, introduce las unidades", Toast.LENGTH_SHORT).show();
                 }
 
-                Date currentTime = Calendar.getInstance().getTime();
-                String fDate = new SimpleDateFormat("yyyy-MM-dd").format(currentTime);
                 try {
 //                    repository.modifyTask(new Task(title, fDate, date, parts[1], task.totalUnits , amount, 0, task.id));
-                    repository.modifyTask(new Task(title, fDate, date, mUnits, tUnits , cUnits, 0, task.id, notes));
+                    repository.modifyTask(new Task(title, task.beginDate, date, mUnits, tUnits , cUnits, 0, task.id, notes));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

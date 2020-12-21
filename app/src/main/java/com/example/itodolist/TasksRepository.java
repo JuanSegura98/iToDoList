@@ -83,8 +83,9 @@ public class TasksRepository {
                     final String measureunit = (String) data.get("measureunit");
                     final Long totalunits = (Long) data.get("totalunits");
                     final Long currentunits = (Long) data.get("currentunit");
+                    final String notes = (String) data.get("notes");
 
-                    tasks.add(new Task(name, begindate, enddate, measureunit, totalunits.intValue(), currentunits.intValue(), progressbar, document.getId(), ""));
+                    tasks.add(new Task(name, begindate, enddate, measureunit, totalunits.intValue(), currentunits.intValue(), progressbar, document.getId(), notes));
                     Log.d("FIREBASE", document.getId() + " => " + document.getData());
 
                     listener.onEvent(tasks, null);
@@ -107,6 +108,7 @@ public class TasksRepository {
         user.put("totalunits", task.totalUnits);
         user.put("currentunit", task.currentUnits);
         user.put("measureunit", task.measureUnit);
+        user.put("notes", task.notes);
 
 // Add a new document with a generated ID
         db.collection("tasks")
@@ -149,6 +151,7 @@ public class TasksRepository {
         user.put("totalunits", task.totalUnits);
         user.put("currentunit", task.currentUnits);
         user.put("measureunit", task.measureUnit);
+        user.put("notes", task.notes);
 
 // Add a new document with a generated ID
         db.collection("tasks").document(task.id)

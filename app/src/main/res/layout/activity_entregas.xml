@@ -8,13 +8,13 @@
     android:paddingRight="16dp"
     android:paddingTop="16dp"
     android:paddingBottom="16dp"
-    android:background="@android:color/holo_orange_light"
+    android:background="@color/gray"
     android:orientation="vertical"
     tools:context=".Entregas">
 
     <Button
         android:id="@+id/moodlebtn"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:onClick="moodle"
@@ -24,7 +24,7 @@
         android:layout_marginTop="160dp"/>
     <Button
         android:id="@+id/aulawebbtn"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:onClick="aulaweb"
@@ -35,7 +35,7 @@
 
     <Button
         android:id="@+id/webmailbtn"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:onClick="webmail"

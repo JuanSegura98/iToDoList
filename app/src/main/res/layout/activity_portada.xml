@@ -4,42 +4,49 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PortadaActivity"
-    android:orientation="vertical"
+    android:background="@color/colorPrimary"
     android:gravity="center"
-    android:background="@color/colorPrimary">
+    android:orientation="vertical"
+    tools:context=".PortadaActivity">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="iDO"
-        android:textStyle="bold"
-        android:textSize="80dp"
         android:textColor="@android:color/white"
-        android:textColorHighlight="@android:color/black"/>
+        android:textColorHighlight="@android:color/black"
+        android:textSize="80dp"
+        android:textStyle="bold" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Por el Grupo B"
         android:textColor="#eee9e9"
-        android:textStyle="italic"/>
+        android:textStyle="italic" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/startBtn"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
         android:text="Tareas"
-        android:textSize="20dp"
+        android:padding="8dp"
         android:textAllCaps="false"
-        android:layout_marginTop="10dp"/>
+        android:textColor="@color/colorPrimary"
+        app:backgroundTint="@color/white"
+        android:theme="@style/AppTheme.Button"
+        android:textSize="20dp" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/EntregasBtn"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:text="Entrega"
-        android:textSize="20dp"
+        android:textColor="@color/colorPrimary"
+        app:backgroundTint="@color/white"
+        android:padding="8dp"
         android:textAllCaps="false"
-        android:layout_marginTop="1dp"/>
+        android:textSize="20dp" />
 </LinearLayout>

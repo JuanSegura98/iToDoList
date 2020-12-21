@@ -88,7 +88,7 @@ public class ModifyTaskActivity extends AppCompatActivity {
                 String fDate = new SimpleDateFormat("yyyy-MM-dd").format(currentTime);
                 try {
 //                    repository.modifyTask(new Task(title, fDate, date, parts[1], task.totalUnits , amount, 0, task.id));
-                    repository.modifyTask(new Task(title, fDate, date, mUnits, tUnits , cUnits, 0, task.id));
+                    repository.modifyTask(new Task(title, fDate, date, mUnits, tUnits , cUnits, 0, task.id, ""));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

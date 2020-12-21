@@ -66,7 +66,7 @@ public class NewTaskActivity extends AppCompatActivity {
                 Date currentTime = Calendar.getInstance().getTime();
                 String fDate = new SimpleDateFormat("yyyy-MM-dd").format(currentTime);
                 try {
-                    repository.createTask(new Task(title, fDate, date, measureUnits, amount, 0, 0, ""));
+                    repository.createTask(new Task(title, fDate, date, measureUnits, amount, 0, 0, "", ""));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

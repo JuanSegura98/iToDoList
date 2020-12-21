@@ -84,7 +84,7 @@ public class TasksRepository {
                     final Long totalunits = (Long) data.get("totalunits");
                     final Long currentunits = (Long) data.get("currentunit");
 
-                    tasks.add(new Task(name, begindate, enddate, measureunit, totalunits.intValue(), currentunits.intValue(), progressbar, document.getId()));
+                    tasks.add(new Task(name, begindate, enddate, measureunit, totalunits.intValue(), currentunits.intValue(), progressbar, document.getId(), ""));
                     Log.d("FIREBASE", document.getId() + " => " + document.getData());
 
                     listener.onEvent(tasks, null);
